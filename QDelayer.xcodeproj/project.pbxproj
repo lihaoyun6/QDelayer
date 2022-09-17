@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18F9C0DD28D521A90037235A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C0DF28D521A90037235A /* Localizable.strings */; };
+		18F9C0F828D52D280037235A /* Credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C0FA28D52D280037235A /* Credits.rtfd */; };
+		18F9C10928D5384A0037235A /* HelperAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9C10828D5384A0037235A /* HelperAppDelegate.swift */; };
+		18F9C10D28D5384A0037235A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C10C28D5384A0037235A /* Assets.xcassets */; };
+		18F9C11028D5384A0037235A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C10E28D5384A0037235A /* Main.storyboard */; };
+		18F9C11828D53A320037235A /* QDelayerLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18F9C10628D5384A0037235A /* QDelayerLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		18F9C11A28D53ACC0037235A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C11928D53ACC0037235A /* Info.plist */; };
+		18FB4F7828D4E51100D9AD63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB4F7728D4E51100D9AD63 /* AppDelegate.swift */; };
+		18FB4F7C28D4E51100D9AD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18FB4F7B28D4E51100D9AD63 /* Assets.xcassets */; };
+		18FB4F7F28D4E51100D9AD63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FB4F7D28D4E51100D9AD63 /* Main.storyboard */; };
+		18FB4F8A28D4E81800D9AD63 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 18FB4F8928D4E81800D9AD63 /* HotKey */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		18F9C11728D53A2B0037235A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				18F9C11828D53A320037235A /* QDelayerLoginHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		18F9C0DE28D521A90037235A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18F9C0E128D521BB0037235A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		18F9C0E228D521C10037235A /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		18F9C0E328D522260037235A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		18F9C0F928D52D280037235A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.rtfd"; sourceTree = "<group>"; };
+		18F9C0FB28D52D2B0037235A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = "zh-Hant"; path = "zh-Hant.lproj/Credits.rtfd"; sourceTree = "<group>"; };
+		18F9C0FC28D52D2C0037235A /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = "zh-HK"; path = "zh-HK.lproj/Credits.rtfd"; sourceTree = "<group>"; };
+		18F9C0FD28D52D2D0037235A /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = en; path = en.lproj/Credits.rtfd; sourceTree = "<group>"; };
+		18F9C0FE28D52D300037235A /* Base */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = Base; path = Base.lproj/Credits.rtfd; sourceTree = "<group>"; };
+		18F9C10628D5384A0037235A /* QDelayerLoginHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QDelayerLoginHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F9C10828D5384A0037235A /* HelperAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperAppDelegate.swift; sourceTree = "<group>"; };
+		18F9C10C28D5384A0037235A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18F9C10F28D5384A0037235A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		18F9C11128D5384A0037235A /* QDelayerLoginHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QDelayerLoginHelper.entitlements; sourceTree = "<group>"; };
+		18F9C11928D53ACC0037235A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18FB4F7428D4E51100D9AD63 /* QDelayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QDelayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18FB4F7728D4E51100D9AD63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		18FB4F7B28D4E51100D9AD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18FB4F7E28D4E51100D9AD63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		18FB4F8028D4E51100D9AD63 /* QDelayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QDelayer.entitlements; sourceTree = "<group>"; };
+		18FB4F8628D4E73600D9AD63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		18F9C10328D5384A0037235A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18FB4F7128D4E51100D9AD63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18FB4F8A28D4E81800D9AD63 /* HotKey in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18F9C10728D5384A0037235A /* QDelayerLoginHelper */ = {
+			isa = PBXGroup;
+			children = (
+				18F9C10828D5384A0037235A /* HelperAppDelegate.swift */,
+				18F9C11928D53ACC0037235A /* Info.plist */,
+				18F9C10C28D5384A0037235A /* Assets.xcassets */,
+				18F9C10E28D5384A0037235A /* Main.storyboard */,
+				18F9C11128D5384A0037235A /* QDelayerLoginHelper.entitlements */,
+			);
+			path = QDelayerLoginHelper;
+			sourceTree = "<group>";
+		};
+		18FB4F6B28D4E51100D9AD63 = {
+			isa = PBXGroup;
+			children = (
+				18FB4F7628D4E51100D9AD63 /* QDelayer */,
+				18F9C10728D5384A0037235A /* QDelayerLoginHelper */,
+				18FB4F7528D4E51100D9AD63 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		18FB4F7528D4E51100D9AD63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18FB4F7428D4E51100D9AD63 /* QDelayer.app */,
+				18F9C10628D5384A0037235A /* QDelayerLoginHelper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18FB4F7628D4E51100D9AD63 /* QDelayer */ = {
+			isa = PBXGroup;
+			children = (
+				18FB4F7728D4E51100D9AD63 /* AppDelegate.swift */,
+				18FB4F8028D4E51100D9AD63 /* QDelayer.entitlements */,
+				18FB4F7B28D4E51100D9AD63 /* Assets.xcassets */,
+				18FB4F7D28D4E51100D9AD63 /* Main.storyboard */,
+				18FB4F8628D4E73600D9AD63 /* Info.plist */,
+				18F9C0FA28D52D280037235A /* Credits.rtfd */,
+				18F9C0DF28D521A90037235A /* Localizable.strings */,
+			);
+			path = QDelayer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		18F9C10528D5384A0037235A /* QDelayerLoginHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18F9C11228D5384A0037235A /* Build configuration list for PBXNativeTarget "QDelayerLoginHelper" */;
+			buildPhases = (
+				18F9C10228D5384A0037235A /* Sources */,
+				18F9C10328D5384A0037235A /* Frameworks */,
+				18F9C10428D5384A0037235A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QDelayerLoginHelper;
+			productName = QDelayerLoginHelper;
+			productReference = 18F9C10628D5384A0037235A /* QDelayerLoginHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		18FB4F7328D4E51100D9AD63 /* QDelayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18FB4F8328D4E51100D9AD63 /* Build configuration list for PBXNativeTarget "QDelayer" */;
+			buildPhases = (
+				18FB4F7028D4E51100D9AD63 /* Sources */,
+				18FB4F7128D4E51100D9AD63 /* Frameworks */,
+				18FB4F7228D4E51100D9AD63 /* Resources */,
+				18F9C11728D53A2B0037235A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QDelayer;
+			packageProductDependencies = (
+				18FB4F8928D4E81800D9AD63 /* HotKey */,
+			);
+			productName = QDelayer;
+			productReference = 18FB4F7428D4E51100D9AD63 /* QDelayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		18FB4F6C28D4E51100D9AD63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					18F9C10528D5384A0037235A = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					18FB4F7328D4E51100D9AD63 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = 18FB4F6F28D4E51100D9AD63 /* Build configuration list for PBXProject "QDelayer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hant",
+				"zh-HK",
+				"zh-Hans",
+			);
+			mainGroup = 18FB4F6B28D4E51100D9AD63;
+			packageReferences = (
+				18FB4F8828D4E81800D9AD63 /* XCRemoteSwiftPackageReference "HotKey" */,
+			);
+			productRefGroup = 18FB4F7528D4E51100D9AD63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				18FB4F7328D4E51100D9AD63 /* QDelayer */,
+				18F9C10528D5384A0037235A /* QDelayerLoginHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		18F9C10428D5384A0037235A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F9C10D28D5384A0037235A /* Assets.xcassets in Resources */,
+				18F9C11028D5384A0037235A /* Main.storyboard in Resources */,
+				18F9C11A28D53ACC0037235A /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18FB4F7228D4E51100D9AD63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F9C0F828D52D280037235A /* Credits.rtfd in Resources */,
+				18FB4F7C28D4E51100D9AD63 /* Assets.xcassets in Resources */,
+				18F9C0DD28D521A90037235A /* Localizable.strings in Resources */,
+				18FB4F7F28D4E51100D9AD63 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		18F9C10228D5384A0037235A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F9C10928D5384A0037235A /* HelperAppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18FB4F7028D4E51100D9AD63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18FB4F7828D4E51100D9AD63 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		18F9C0DF28D521A90037235A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18F9C0DE28D521A90037235A /* en */,
+				18F9C0E128D521BB0037235A /* zh-Hant */,
+				18F9C0E228D521C10037235A /* zh-HK */,
+				18F9C0E328D522260037235A /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		18F9C0FA28D52D280037235A /* Credits.rtfd */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18F9C0F928D52D280037235A /* zh-Hans */,
+				18F9C0FB28D52D2B0037235A /* zh-Hant */,
+				18F9C0FC28D52D2C0037235A /* zh-HK */,
+				18F9C0FD28D52D2D0037235A /* en */,
+				18F9C0FE28D52D300037235A /* Base */,
+			);
+			name = Credits.rtfd;
+			sourceTree = "<group>";
+		};
+		18F9C10E28D5384A0037235A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18F9C10F28D5384A0037235A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		18FB4F7D28D4E51100D9AD63 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18FB4F7E28D4E51100D9AD63 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		18F9C11328D5384A0037235A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QDelayerLoginHelper/QDelayerLoginHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QDelayerLoginHelper/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaoyun6.QDelayerLoginHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		18F9C11428D5384A0037235A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QDelayerLoginHelper/QDelayerLoginHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QDelayerLoginHelper/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaoyun6.QDelayerLoginHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		18FB4F8128D4E51100D9AD63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		18FB4F8228D4E51100D9AD63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		18FB4F8428D4E51100D9AD63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QDelayer/QDelayer.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QDelayer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 lihaoyun6. All rights reserved.";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaoyun6.QDelayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		18FB4F8528D4E51100D9AD63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QDelayer/QDelayer.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QDelayer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 lihaoyun6. All rights reserved.";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaoyun6.QDelayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		18F9C11228D5384A0037235A /* Build configuration list for PBXNativeTarget "QDelayerLoginHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18F9C11328D5384A0037235A /* Debug */,
+				18F9C11428D5384A0037235A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18FB4F6F28D4E51100D9AD63 /* Build configuration list for PBXProject "QDelayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18FB4F8128D4E51100D9AD63 /* Debug */,
+				18FB4F8228D4E51100D9AD63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18FB4F8328D4E51100D9AD63 /* Build configuration list for PBXNativeTarget "QDelayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18FB4F8428D4E51100D9AD63 /* Debug */,
+				18FB4F8528D4E51100D9AD63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		18FB4F8828D4E81800D9AD63 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18FB4F8928D4E81800D9AD63 /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18FB4F8828D4E81800D9AD63 /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 18FB4F6C28D4E51100D9AD63 /* Project object */;
+}

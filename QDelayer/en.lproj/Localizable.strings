@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  QDelayer
+
+  Created by apple on 2022/9/17.
+  
+*/
+"按住 ⌘Q 退出当前程序" = "Hold ⌘Q to Quit";
+"已启用" = "Enabled";
+"未启用" = "Disabled";
+"偏好设置..." = "Preferences...";
+"关于 QDelayer" = "About QDelayer";
+"倒计时动画" = "Animation";
+"等待时长..." = "Delay...";
+"白名单模式" = "Whitelist Mode";
+"登录时启动" = "Launch at Login";
+"退出" = "Quit";
