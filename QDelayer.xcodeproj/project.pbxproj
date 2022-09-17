@@ -13,7 +13,6 @@
 		18F9C10D28D5384A0037235A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C10C28D5384A0037235A /* Assets.xcassets */; };
 		18F9C11028D5384A0037235A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C10E28D5384A0037235A /* Main.storyboard */; };
 		18F9C11828D53A320037235A /* QDelayerLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18F9C10628D5384A0037235A /* QDelayerLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		18F9C11A28D53ACC0037235A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C11928D53ACC0037235A /* Info.plist */; };
 		18FB4F7828D4E51100D9AD63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB4F7728D4E51100D9AD63 /* AppDelegate.swift */; };
 		18FB4F7C28D4E51100D9AD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18FB4F7B28D4E51100D9AD63 /* Assets.xcassets */; };
 		18FB4F7F28D4E51100D9AD63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FB4F7D28D4E51100D9AD63 /* Main.storyboard */; };
@@ -211,7 +210,6 @@
 			files = (
 				18F9C10D28D5384A0037235A /* Assets.xcassets in Resources */,
 				18F9C11028D5384A0037235A /* Main.storyboard in Resources */,
-				18F9C11A28D53ACC0037235A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,7 +470,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -487,7 +485,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lihaoyun6.QDelayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -504,7 +502,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -519,7 +517,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lihaoyun6.QDelayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

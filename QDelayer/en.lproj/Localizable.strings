@@ -6,6 +6,10 @@
   
 */
 "按住 ⌘Q 退出当前程序" = "Hold ⌘Q to Quit";
+"再次按下 ⌘Q 退出程序" = "Press ⌘Q again to Quit";
+"再次按下 ⌘W 关闭窗口" = "Press ⌘W again to Close";
+"双击代替长按" = "Double Press Mode";
+"拦截 ⌘W 键" = "Apply to ⌘W";
 "已启用" = "Enabled";
 "未启用" = "Disabled";
 "偏好设置..." = "Preferences...";

@@ -31,14 +31,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var foundHelper = false
     var anima = UserDefaults.standard.bool(forKey: "anima")
     var disable = UserDefaults.standard.bool(forKey: "disable")
+    var doubleQ = UserDefaults.standard.bool(forKey: "doubleQ")
+    var blockCmdW = UserDefaults.standard.bool(forKey: "blockCmdW")
     var whiteMode = UserDefaults.standard.bool(forKey: "whiteMode")
     var delay = (UserDefaults.standard.object(forKey: "delay") ?? 1) as! Int
     var blackList = (UserDefaults.standard.array(forKey: "blackList") ?? []) as! [String]
     var statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
     let menu = NSMenu()
     let text = NSTextField()
-    let label = "按住 ⌘Q 退出当前程序".local
+    let labelQ = "按住 ⌘Q 退出当前程序".local
+    let labelQD = "再次按下 ⌘Q 退出程序".local
+    let labelWD = "再次按下 ⌘W 关闭窗口".local
+    let textFont = NSFont.boldSystemFont(ofSize: 40.0)
     let QuitKey = HotKey(key: .q, modifiers: [.command])
+    let CloseKey = HotKey(key: .w, modifiers: [.command])
     let helperBundleName = "com.lihaoyun6.QDelayerLoginHelper"
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -48,48 +54,73 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menuIcon()
         menuWillOpen(menu)
         initHUD()
-        if disable { QuitKey.isPaused = true } else { QuitKey.isPaused = false }
+        if disable { QuitKey.isPaused = true; CloseKey.isPaused = true } else { QuitKey.isPaused = false; CloseKey.isPaused = false }
+        if !blockCmdW { CloseKey.isPaused = true } else { CloseKey.isPaused = false }
         
         QuitKey.keyDownHandler = {
-            if self.disable { return }
+            self.keydown = true
             let fApp = self.getAppName(NSWorkspace.shared.frontmostApplication?.bundleURL)
             if (self.whiteMode && !self.blackList.contains(fApp)) || (!self.whiteMode && self.blackList.contains(fApp)) {
                 NSWorkspace.shared.frontmostApplication?.terminate()
                 return
             }
-            self.keydown = true
-            self.text.stringValue = self.label
-            if self.anima { self.text.stringValue = "⬜️ " + self.label + " ⬜️" }
+            
+            self.text.stringValue = self.labelQ
+            if self.anima { self.text.stringValue = "⬜️ " + self.labelQ + " ⬜️" }
+            if self.doubleQ { self.text.stringValue = self.labelQD }
+            
+            self.setTextWidth(self.text.stringValue)
             self.HUD?.makeKeyAndOrderFront(self)
+            
             Thread.detachNewThread {
-                let range = self.delay*100
-                for i in 1...range {
-                    if !self.keydown { return }
-                    if self.anima {
-                        switch(i){
-                        case _ where i <= Int(Double(range)*0.25):
-                            DispatchQueue.main.async(execute: {self.text.stringValue = "⬜️ " + self.label + " ⬜️"})
-                        case _ where i <= Int(Double(range)*0.50):
-                            DispatchQueue.main.async(execute: {self.text.stringValue = "◻️ " + self.label + " ◻️"})
-                        case _ where i <= Int(Double(range)*0.75):
-                            DispatchQueue.main.async(execute: {self.text.stringValue = "◽️ " + self.label + " ◽️"})
-                        case _ where i <= Int(Double(range)*0.98):
-                            DispatchQueue.main.async(execute: {self.text.stringValue = "▫️ " + self.label + " ▫️"})
-                        default:
-                            DispatchQueue.main.async(execute: {self.text.stringValue = self.label})
+                if self.doubleQ {
+                    self.QuitKey.isPaused = true
+                    usleep(400000)
+                    self.QuitKey.isPaused = false
+                    DispatchQueue.main.async(execute: { self.HUD?.close() })
+                }else{
+                    let range = self.delay*100
+                    for i in 1...range {
+                        if !self.keydown { return }
+                        if self.anima {
+                            switch(i){
+                            case _ where i <= Int(Double(range)*0.25):
+                                self.updateLabel("⬜️ " + self.labelQ + " ⬜️")
+                            case _ where i <= Int(Double(range)*0.50):
+                                self.updateLabel("◻️ " + self.labelQ + " ◻️")
+                            case _ where i <= Int(Double(range)*0.75):
+                                self.updateLabel("◽️ " + self.labelQ + " ◽️")
+                            case _ where i <= Int(Double(range)*0.98):
+                                self.updateLabel("▫️ " + self.labelQ + " ▫️")
+                            default:
+                                self.updateLabel(self.labelQ)
+                            }
                         }
+                        if i >= range {
+                            NSWorkspace.shared.frontmostApplication?.terminate()
+                            DispatchQueue.main.async(execute: { self.HUD?.close() })
+                        }
+                        usleep(10000)
                     }
-                    if i >= range {
-                        NSWorkspace.shared.frontmostApplication?.terminate()
-                        DispatchQueue.main.async(execute: { self.HUD?.close() })
-                    }
-                    usleep(10000)
                 }
             }
         }
         QuitKey.keyUpHandler = {
             self.keydown = false
-            self.HUD?.close()
+            if !self.doubleQ { self.HUD?.close() }
+        }
+        
+        CloseKey.keyDownHandler = {
+            self.text.stringValue = self.labelWD
+            self.setTextWidth(self.text.stringValue)
+            self.HUD?.makeKeyAndOrderFront(self)
+            
+            Thread.detachNewThread {
+                self.CloseKey.isPaused = true
+                usleep(400000)
+                self.CloseKey.isPaused = false
+                DispatchQueue.main.async(execute: { self.HUD?.close() })
+            }
         }
     
     }
@@ -136,7 +167,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         options.addItem(withTitle: "登录时启动".local, action: #selector(setRunAtLogin(_:)), keyEquivalent: "").state = state(foundHelper)
         options.addItem(NSMenuItem.separator())
         options.addItem(withTitle: "倒计时动画".local, action: #selector(setAnima(_:)), keyEquivalent: "").state = state(anima)
+        options.addItem(withTitle: "拦截 ⌘W 键".local, action: #selector(setCmdW(_:)), keyEquivalent: "").state = state(blockCmdW)
         options.addItem(withTitle: "白名单模式".local, action: #selector(setWhiteMode(_:)), keyEquivalent: "").state = state(whiteMode)
+        options.addItem(withTitle: "双击代替长按".local, action: #selector(setDoubleQ(_:)), keyEquivalent: "").state = state(doubleQ)
+        options.addItem(NSMenuItem.separator())
         options.setSubmenu(choose, for: options.addItem(withTitle: "等待时长...".local, action: nil, keyEquivalent: ""))
         choose.addItem(withTitle: "1s", action: #selector(setDelay(_:)), keyEquivalent: "").state = state(delay == 1)
         choose.addItem(withTitle: "2s", action: #selector(setDelay(_:)), keyEquivalent: "").state = state(delay == 2)
@@ -200,16 +234,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
     
     func initHUD() {
-        let screen = self.getScreenWithMouse()
-        let w = screen?.frame.width ?? 0
-        let h = screen?.frame.height ?? 0
-        let textFont = NSFont.boldSystemFont(ofSize: 40.0)
-        let cell = NSCell(textCell: "⬜️ " + label + " ⬜️")
-        cell.font = textFont
-        let textW = cell.cellSize.width+50
+        //let screen = self.getScreenWithMouse()
+        //let w = screen?.frame.width ?? 0
+        //let h = screen?.frame.height ?? 0
+        //let textFont = NSFont.boldSystemFont(ofSize: 40.0)
+        //let cell = NSCell(textCell: "⬜️ " + labelQ + " ⬜️")
+        //cell.font = textFont
+        //let textW = cell.cellSize.width+50
         
         HUD = NSWindow(contentRect: .init(origin: .zero, size: .init(width: 0, height: 0)), styleMask: .titled, backing: .buffered, defer: false)
-        HUD?.setFrame(NSMakeRect((w-textW)/2, (h-100)/2, textW, 100), display: true)
+        //HUD?.setFrame(NSMakeRect((w-textW)/2, (h-100)/2, textW, 100), display: true)
         HUD?.isReleasedWhenClosed = false
         HUD?.level = .statusBar
         HUD?.isOpaque = false
@@ -219,14 +253,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         HUD?.collectionBehavior = [.transient, .ignoresCycle]
         HUD?.backgroundColor = NSColor(white: 0.0, alpha: 0.6)
         
-        text.stringValue = label
+        text.stringValue = labelQ
         text.isEditable = false
         text.isSelectable = false
         text.isBezeled = false
         text.textColor = .white
         text.alignment = .center
         text.font = textFont
-        text.frame = NSMakeRect(0, -24, textW, 100)
+        //text.frame = NSMakeRect(0, -24, textW, 100)
         //NSFont(name: "Menlo", size: 40)
         text.backgroundColor = NSColor.clear
         text.drawsBackground = false
@@ -262,6 +296,34 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         whiteMode.toggle()
         UserDefaults.standard.set(whiteMode, forKey: "whiteMode")
     }
-
+    
+    //设置双击模式
+    @objc func setDoubleQ(_ sender: NSMenuItem) {
+        doubleQ.toggle()
+        UserDefaults.standard.set(doubleQ, forKey: "doubleQ")
+    }
+    
+    //设置双击模式
+    @objc func setCmdW(_ sender: NSMenuItem) {
+        blockCmdW.toggle()
+        UserDefaults.standard.set(blockCmdW, forKey: "blockCmdW")
+        if blockCmdW { CloseKey.isPaused = false } else { CloseKey.isPaused = true }
+    }
+      
+    
+    func setTextWidth(_ txt: String) {
+        let cell = NSCell(textCell: txt)
+        cell.font = textFont
+        let textWidth = cell.cellSize.width + 80
+        let screen = self.getScreenWithMouse()
+        let w = screen?.frame.width ?? 0
+        let h = screen?.frame.height ?? 0
+        HUD?.setFrame(NSMakeRect((w-textWidth)/2, (h-100)/2, textWidth, 100), display: true)
+        text.frame = NSMakeRect(0, -24, textWidth, 100)
+    }
+    
+    func updateLabel(_ txt: String) {
+        DispatchQueue.main.async(execute: {self.text.stringValue = txt})
+    }
 }
 
