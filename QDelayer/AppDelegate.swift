@@ -192,7 +192,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         disable.toggle()
         statusItem.button?.image = NSImage(named:NSImage.Name("MenuBarIcon\(NSNumber(value: !disable).intValue)"))
         UserDefaults.standard.set(disable, forKey: "disable")
-        if disable { QuitKey.isPaused = true } else { QuitKey.isPaused = false }
+        if disable { QuitKey.isPaused = true; CloseKey.isPaused = true } else { QuitKey.isPaused = false; CloseKey.isPaused = false }
     }
     
     //将Bool值转换为NSControl.StateValue
