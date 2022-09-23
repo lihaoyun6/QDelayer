@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184EDF9128DE161C00CE5109 /* HelperAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EDF9028DE161C00CE5109 /* HelperAppDelegate.swift */; };
+		184EDF9528DE161C00CE5109 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184EDF9428DE161C00CE5109 /* Assets.xcassets */; };
+		184EDF9828DE161C00CE5109 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184EDF9628DE161C00CE5109 /* Main.storyboard */; };
+		184EDF9D28DE17ED00CE5109 /* QDelayerLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 184EDF8E28DE161B00CE5109 /* QDelayerLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		18F9C0DD28D521A90037235A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C0DF28D521A90037235A /* Localizable.strings */; };
 		18F9C0F828D52D280037235A /* Credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C0FA28D52D280037235A /* Credits.rtfd */; };
-		18F9C10928D5384A0037235A /* HelperAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9C10828D5384A0037235A /* HelperAppDelegate.swift */; };
-		18F9C10D28D5384A0037235A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C10C28D5384A0037235A /* Assets.xcassets */; };
-		18F9C11028D5384A0037235A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F9C10E28D5384A0037235A /* Main.storyboard */; };
-		18F9C11828D53A320037235A /* QDelayerLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18F9C10628D5384A0037235A /* QDelayerLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		18FB4F7828D4E51100D9AD63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB4F7728D4E51100D9AD63 /* AppDelegate.swift */; };
 		18FB4F7C28D4E51100D9AD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18FB4F7B28D4E51100D9AD63 /* Assets.xcassets */; };
 		18FB4F7F28D4E51100D9AD63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FB4F7D28D4E51100D9AD63 /* Main.storyboard */; };
@@ -26,13 +26,19 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				18F9C11828D53A320037235A /* QDelayerLoginHelper.app in CopyFiles */,
+				184EDF9D28DE17ED00CE5109 /* QDelayerLoginHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		184EDF8E28DE161B00CE5109 /* QDelayerLoginHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QDelayerLoginHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		184EDF9028DE161C00CE5109 /* HelperAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperAppDelegate.swift; sourceTree = "<group>"; };
+		184EDF9428DE161C00CE5109 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		184EDF9728DE161C00CE5109 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		184EDF9928DE161C00CE5109 /* QDelayerLoginHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QDelayerLoginHelper.entitlements; sourceTree = "<group>"; };
+		18CEEB1328DE19F300FA1278 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18F9C0DE28D521A90037235A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18F9C0E128D521BB0037235A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		18F9C0E228D521C10037235A /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -42,12 +48,6 @@
 		18F9C0FC28D52D2C0037235A /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = "zh-HK"; path = "zh-HK.lproj/Credits.rtfd"; sourceTree = "<group>"; };
 		18F9C0FD28D52D2D0037235A /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = en; path = en.lproj/Credits.rtfd; sourceTree = "<group>"; };
 		18F9C0FE28D52D300037235A /* Base */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = Base; path = Base.lproj/Credits.rtfd; sourceTree = "<group>"; };
-		18F9C10628D5384A0037235A /* QDelayerLoginHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QDelayerLoginHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		18F9C10828D5384A0037235A /* HelperAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperAppDelegate.swift; sourceTree = "<group>"; };
-		18F9C10C28D5384A0037235A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		18F9C10F28D5384A0037235A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		18F9C11128D5384A0037235A /* QDelayerLoginHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QDelayerLoginHelper.entitlements; sourceTree = "<group>"; };
-		18F9C11928D53ACC0037235A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18FB4F7428D4E51100D9AD63 /* QDelayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QDelayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18FB4F7728D4E51100D9AD63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18FB4F7B28D4E51100D9AD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		18F9C10328D5384A0037235A /* Frameworks */ = {
+		184EDF8B28DE161B00CE5109 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -75,14 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18F9C10728D5384A0037235A /* QDelayerLoginHelper */ = {
+		184EDF8F28DE161B00CE5109 /* QDelayerLoginHelper */ = {
 			isa = PBXGroup;
 			children = (
-				18F9C10828D5384A0037235A /* HelperAppDelegate.swift */,
-				18F9C11928D53ACC0037235A /* Info.plist */,
-				18F9C10C28D5384A0037235A /* Assets.xcassets */,
-				18F9C10E28D5384A0037235A /* Main.storyboard */,
-				18F9C11128D5384A0037235A /* QDelayerLoginHelper.entitlements */,
+				184EDF9028DE161C00CE5109 /* HelperAppDelegate.swift */,
+				184EDF9428DE161C00CE5109 /* Assets.xcassets */,
+				18CEEB1328DE19F300FA1278 /* Info.plist */,
+				184EDF9628DE161C00CE5109 /* Main.storyboard */,
+				184EDF9928DE161C00CE5109 /* QDelayerLoginHelper.entitlements */,
 			);
 			path = QDelayerLoginHelper;
 			sourceTree = "<group>";
@@ -91,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				18FB4F7628D4E51100D9AD63 /* QDelayer */,
-				18F9C10728D5384A0037235A /* QDelayerLoginHelper */,
+				184EDF8F28DE161B00CE5109 /* QDelayerLoginHelper */,
 				18FB4F7528D4E51100D9AD63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				18FB4F7428D4E51100D9AD63 /* QDelayer.app */,
-				18F9C10628D5384A0037235A /* QDelayerLoginHelper.app */,
+				184EDF8E28DE161B00CE5109 /* QDelayerLoginHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,13 +122,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		18F9C10528D5384A0037235A /* QDelayerLoginHelper */ = {
+		184EDF8D28DE161B00CE5109 /* QDelayerLoginHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 18F9C11228D5384A0037235A /* Build configuration list for PBXNativeTarget "QDelayerLoginHelper" */;
+			buildConfigurationList = 184EDF9A28DE161C00CE5109 /* Build configuration list for PBXNativeTarget "QDelayerLoginHelper" */;
 			buildPhases = (
-				18F9C10228D5384A0037235A /* Sources */,
-				18F9C10328D5384A0037235A /* Frameworks */,
-				18F9C10428D5384A0037235A /* Resources */,
+				184EDF8A28DE161B00CE5109 /* Sources */,
+				184EDF8B28DE161B00CE5109 /* Frameworks */,
+				184EDF8C28DE161B00CE5109 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -136,7 +136,7 @@
 			);
 			name = QDelayerLoginHelper;
 			productName = QDelayerLoginHelper;
-			productReference = 18F9C10628D5384A0037235A /* QDelayerLoginHelper.app */;
+			productReference = 184EDF8E28DE161B00CE5109 /* QDelayerLoginHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18FB4F7328D4E51100D9AD63 /* QDelayer */ = {
@@ -170,7 +170,7 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					18F9C10528D5384A0037235A = {
+					184EDF8D28DE161B00CE5109 = {
 						CreatedOnToolsVersion = 14.0;
 					};
 					18FB4F7328D4E51100D9AD63 = {
@@ -198,18 +198,18 @@
 			projectRoot = "";
 			targets = (
 				18FB4F7328D4E51100D9AD63 /* QDelayer */,
-				18F9C10528D5384A0037235A /* QDelayerLoginHelper */,
+				184EDF8D28DE161B00CE5109 /* QDelayerLoginHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		18F9C10428D5384A0037235A /* Resources */ = {
+		184EDF8C28DE161B00CE5109 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F9C10D28D5384A0037235A /* Assets.xcassets in Resources */,
-				18F9C11028D5384A0037235A /* Main.storyboard in Resources */,
+				184EDF9528DE161C00CE5109 /* Assets.xcassets in Resources */,
+				184EDF9828DE161C00CE5109 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,11 +227,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		18F9C10228D5384A0037235A /* Sources */ = {
+		184EDF8A28DE161B00CE5109 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F9C10928D5384A0037235A /* HelperAppDelegate.swift in Sources */,
+				184EDF9128DE161C00CE5109 /* HelperAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +246,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		184EDF9628DE161C00CE5109 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				184EDF9728DE161C00CE5109 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		18F9C0DF28D521A90037235A /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -269,14 +277,6 @@
 			name = Credits.rtfd;
 			sourceTree = "<group>";
 		};
-		18F9C10E28D5384A0037235A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18F9C10F28D5384A0037235A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18FB4F7D28D4E51100D9AD63 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,7 +288,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		18F9C11328D5384A0037235A /* Debug */ = {
+		184EDF9B28DE161C00CE5109 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -297,6 +297,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QDelayerLoginHelper/Info.plist;
 				INFOPLIST_KEY_LSBackgroundOnly = YES;
@@ -317,7 +319,7 @@
 			};
 			name = Debug;
 		};
-		18F9C11428D5384A0037235A /* Release */ = {
+		184EDF9C28DE161C00CE5109 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -326,6 +328,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QDelayerLoginHelper/Info.plist;
 				INFOPLIST_KEY_LSBackgroundOnly = YES;
@@ -470,7 +474,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -485,7 +489,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lihaoyun6.QDelayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -502,7 +506,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -517,7 +521,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lihaoyun6.QDelayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -528,11 +532,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		18F9C11228D5384A0037235A /* Build configuration list for PBXNativeTarget "QDelayerLoginHelper" */ = {
+		184EDF9A28DE161C00CE5109 /* Build configuration list for PBXNativeTarget "QDelayerLoginHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				18F9C11328D5384A0037235A /* Debug */,
-				18F9C11428D5384A0037235A /* Release */,
+				184EDF9B28DE161C00CE5109 /* Debug */,
+				184EDF9C28DE161C00CE5109 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

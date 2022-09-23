@@ -25,6 +25,7 @@ extension Bundle {
 @main
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
+    var fApp = ""
     var timer: Timer?
     var HUD: NSWindow?
     var keydown = false
@@ -34,7 +35,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var doubleQ = UserDefaults.standard.bool(forKey: "doubleQ")
     var blockCmdW = UserDefaults.standard.bool(forKey: "blockCmdW")
     var whiteMode = UserDefaults.standard.bool(forKey: "whiteMode")
-    var delay = (UserDefaults.standard.object(forKey: "delay") ?? 1) as! Int
+    var delay = (UserDefaults.standard.object(forKey: "delay") ?? 50) as! Int
+    var delayW = (UserDefaults.standard.object(forKey: "delayW") ?? 4000) as! Int
     var blackList = (UserDefaults.standard.array(forKey: "blackList") ?? []) as! [String]
     var statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
     let menu = NSMenu()
@@ -54,9 +56,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menuIcon()
         menuWillOpen(menu)
         initHUD()
-        if disable { QuitKey.isPaused = true; CloseKey.isPaused = true } else { QuitKey.isPaused = false; CloseKey.isPaused = false }
+        if disable { QuitKey.isPaused = true; CloseKey.isPaused = true } else { QuitKey.isPaused = false; CloseKey.isPaused = false; startTimer() }
         if !blockCmdW { CloseKey.isPaused = true } else { CloseKey.isPaused = false }
-        
+        //转换参数, 保持旧版兼容性
+        if delay < 50 { delay = 50 }
+
         QuitKey.keyDownHandler = {
             self.keydown = true
             let fApp = self.getAppName(NSWorkspace.shared.frontmostApplication?.bundleURL)
@@ -74,13 +78,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             
             Thread.detachNewThread {
                 if self.doubleQ {
+                    self.stopTimer()
                     self.QuitKey.isPaused = true
-                    usleep(400000)
+                    usleep(UInt32(self.delayW))
                     self.QuitKey.isPaused = false
                     DispatchQueue.main.async(execute: { self.HUD?.close() })
+                    self.startTimer()
                 }else{
-                    let range = self.delay*100
-                    for i in 1...range {
+                    let range = self.delay
+                    for i in 1...range-10 {
                         if !self.keydown { return }
                         if self.anima {
                             switch(i){
@@ -96,7 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
                                 self.updateLabel(self.labelQ)
                             }
                         }
-                        if i >= range {
+                        if i >= range-10 {
                             NSWorkspace.shared.frontmostApplication?.terminate()
                             DispatchQueue.main.async(execute: { self.HUD?.close() })
                         }
@@ -116,10 +122,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             self.HUD?.makeKeyAndOrderFront(self)
             
             Thread.detachNewThread {
+                self.stopTimer()
                 self.CloseKey.isPaused = true
-                usleep(400000)
+                usleep(UInt32(self.delayW))
                 self.CloseKey.isPaused = false
                 DispatchQueue.main.async(execute: { self.HUD?.close() })
+                self.startTimer()
             }
         }
     
@@ -131,6 +139,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
+    }
+    
+    func startTimer() {
+        timer?.invalidate()
+        timer = Timer(timeInterval: 0.1, repeats: true, block: {timer in self.loopFireHandler(timer)})
+        RunLoop.main.add(timer!, forMode: .common)
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+    }
+    
+    @objc func loopFireHandler(_ timer: Timer?) -> Void {
+        fApp = getAppName(NSWorkspace.shared.frontmostApplication?.bundleURL)
+        if whiteMode {
+            if !blackList.contains(fApp) { QuitKey.isPaused = true; CloseKey.isPaused = true }
+            else { QuitKey.isPaused = false; CloseKey.isPaused = false }
+        }else{
+            if blackList.contains(fApp) { QuitKey.isPaused = true; CloseKey.isPaused = true }
+            else { QuitKey.isPaused = false; CloseKey.isPaused = false }
+        }
     }
 
     //初始化菜单栏按钮
@@ -166,15 +195,50 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menu.setSubmenu(options, for: menu.addItem(withTitle: "偏好设置...".local, action: nil, keyEquivalent: ""))
         options.addItem(withTitle: "登录时启动".local, action: #selector(setRunAtLogin(_:)), keyEquivalent: "").state = state(foundHelper)
         options.addItem(NSMenuItem.separator())
+        options.addItem(withTitle: "白名单模式".local, action: #selector(setWhiteMode(_:)), keyEquivalent: "").state = state(whiteMode)
         options.addItem(withTitle: "倒计时动画".local, action: #selector(setAnima(_:)), keyEquivalent: "").state = state(anima)
         options.addItem(withTitle: "拦截 ⌘W 键".local, action: #selector(setCmdW(_:)), keyEquivalent: "").state = state(blockCmdW)
-        options.addItem(withTitle: "白名单模式".local, action: #selector(setWhiteMode(_:)), keyEquivalent: "").state = state(whiteMode)
         options.addItem(withTitle: "双击代替长按".local, action: #selector(setDoubleQ(_:)), keyEquivalent: "").state = state(doubleQ)
         options.addItem(NSMenuItem.separator())
-        options.setSubmenu(choose, for: options.addItem(withTitle: "等待时长...".local, action: nil, keyEquivalent: ""))
-        choose.addItem(withTitle: "1s", action: #selector(setDelay(_:)), keyEquivalent: "").state = state(delay == 1)
-        choose.addItem(withTitle: "2s", action: #selector(setDelay(_:)), keyEquivalent: "").state = state(delay == 2)
-        choose.addItem(withTitle: "3s", action: #selector(setDelay(_:)), keyEquivalent: "").state = state(delay == 3)
+        options.setSubmenu(choose, for: options.addItem(withTitle: "延时设置...".local, action: nil, keyEquivalent: ""))
+        if !doubleQ {
+            choose.addItem(withTitle: "长按延时:".local, action: nil, keyEquivalent: "").target = self
+            //choose.addItem(withTitle: "1s        2s        3s        4s", action: nil, keyEquivalent: "").isEnabled = false
+            choose.addItem(withTitle: "0.5s    1.0s    1.5s    2.0s", action: nil, keyEquivalent: "")
+            let menuSliderItem = NSMenuItem()
+            let menuSlider = NSSlider.init(frame: NSRect(x: 16, y: 0, width: choose.size.width-30, height: 32))
+            let view = NSView.init(frame: NSRect(x: 0, y: 0, width: choose.size.width, height: 32))
+            view.addSubview(menuSlider)
+            menuSlider.sliderType = NSSlider.SliderType.linear
+            menuSlider.isContinuous = true
+            menuSlider.action = #selector(sliderValueChanged(_:))
+            menuSlider.minValue = 50
+            menuSlider.maxValue = 200
+            menuSlider.intValue = Int32(delay)
+            menuSlider.numberOfTickMarks = 4
+            menuSlider.allowsTickMarkValuesOnly = true
+            menuSliderItem.view = view
+            choose.addItem(menuSliderItem)
+        }
+        if blockCmdW || doubleQ {
+            choose.addItem(NSMenuItem.separator())
+            choose.addItem(withTitle: "双击间隔:".local, action: nil, keyEquivalent: "")
+            choose.addItem(withTitle: "0.4s    0.6s    0.8s    1.0s", action: nil, keyEquivalent: "")
+            let menuSliderItem = NSMenuItem()
+            let menuSlider = NSSlider.init(frame: NSRect(x: 16, y: 0, width: choose.size.width-30, height: 32))
+            let view = NSView.init(frame: NSRect(x: 0, y: 0, width: choose.size.width, height: 32))
+            view.addSubview(menuSlider)
+            menuSlider.sliderType = NSSlider.SliderType.linear
+            menuSlider.isContinuous = true
+            menuSlider.action = #selector(sliderValueChanged(_:))
+            menuSlider.minValue = 400000
+            menuSlider.maxValue = 1000000
+            menuSlider.intValue = Int32(delayW)
+            menuSlider.numberOfTickMarks = 4
+            menuSlider.allowsTickMarkValuesOnly = true
+            menuSliderItem.view = view
+            choose.addItem(menuSliderItem)
+        }
         menu.addItem(withTitle: "关于 QDelayer".local, action: #selector(aboutDialog(_:)), keyEquivalent: "")
         menu.addItem(NSMenuItem.separator())
         menu.addItem(withTitle: "退出".local, action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
@@ -192,7 +256,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         disable.toggle()
         statusItem.button?.image = NSImage(named:NSImage.Name("MenuBarIcon\(NSNumber(value: !disable).intValue)"))
         UserDefaults.standard.set(disable, forKey: "disable")
-        if disable { QuitKey.isPaused = true; CloseKey.isPaused = true } else { QuitKey.isPaused = false; CloseKey.isPaused = false }
+        if disable { stopTimer(); QuitKey.isPaused = true; CloseKey.isPaused = true } else { QuitKey.isPaused = false; CloseKey.isPaused = false; startTimer() }
     }
     
     //将Bool值转换为NSControl.StateValue
@@ -227,21 +291,32 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
     
     func getScreenWithMouse() -> NSScreen? {
-      let mouseLocation = NSEvent.mouseLocation
-      let screens = NSScreen.screens
-      let screenWithMouse = (screens.first { NSMouseInRect(mouseLocation, $0.frame, false) })
-      return screenWithMouse
+        let mouseLocation = NSEvent.mouseLocation
+        let screens = NSScreen.screens
+        let screenWithMouse = (screens.first { NSMouseInRect(mouseLocation, $0.frame, false) })
+        return screenWithMouse
+    }
+    
+    //响应滑块事件
+    @objc func sliderValueChanged(_ sender: Any) {
+        guard let slider = sender as? NSSlider,
+              let event = NSApplication.shared.currentEvent else { return }
+        switch event.type {
+        case .leftMouseUp, .rightMouseUp:
+            let value = slider.intValue
+            if value < 400000 {
+                delay = Int(value)
+                UserDefaults.standard.set(delay, forKey: "delay")
+            }else{
+                delayW = Int(value)
+                UserDefaults.standard.set(delayW, forKey: "delayW")
+            }
+        default:
+            break
+        }
     }
     
     func initHUD() {
-        //let screen = self.getScreenWithMouse()
-        //let w = screen?.frame.width ?? 0
-        //let h = screen?.frame.height ?? 0
-        //let textFont = NSFont.boldSystemFont(ofSize: 40.0)
-        //let cell = NSCell(textCell: "⬜️ " + labelQ + " ⬜️")
-        //cell.font = textFont
-        //let textW = cell.cellSize.width+50
-        
         HUD = NSWindow(contentRect: .init(origin: .zero, size: .init(width: 0, height: 0)), styleMask: .titled, backing: .buffered, defer: false)
         //HUD?.setFrame(NSMakeRect((w-textW)/2, (h-100)/2, textW, 100), display: true)
         HUD?.isReleasedWhenClosed = false
@@ -314,11 +389,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     func setTextWidth(_ txt: String) {
         let cell = NSCell(textCell: txt)
         cell.font = textFont
-        let textWidth = cell.cellSize.width + 80
+        let textWidth = cell.cellSize.width + 60
         let screen = self.getScreenWithMouse()
         let w = screen?.frame.width ?? 0
         let h = screen?.frame.height ?? 0
-        HUD?.setFrame(NSMakeRect((w-textWidth)/2, (h-100)/2, textWidth, 100), display: true)
+        let x = screen?.frame.minX ?? 0
+        let y = screen?.frame.minY ?? 0
+        let bound = NSMakeRect((w-textWidth)/2+x, (h-100)/2+y, textWidth, 100)
+        HUD?.setFrame(bound, display: true)
         text.frame = NSMakeRect(0, -24, textWidth, 100)
     }
     
