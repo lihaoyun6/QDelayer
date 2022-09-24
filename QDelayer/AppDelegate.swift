@@ -165,7 +165,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         if whiteMode {
             if !blackList.contains(fApp) {
                 if !QuitKey.isPaused { QuitKey.isPaused = true }
-                if !CloseKey.isPaused { QuitKey.isPaused = true }
+                if !CloseKey.isPaused { CloseKey.isPaused = true }
             }else{
                 if QuitKey.isPaused { QuitKey.isPaused = false }
                 if CloseKey.isPaused && blockCmdW { CloseKey.isPaused = false }
@@ -173,7 +173,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }else{
             if blackList.contains(fApp) {
                 if !QuitKey.isPaused { QuitKey.isPaused = true }
-                if !CloseKey.isPaused { QuitKey.isPaused = true }
+                if !CloseKey.isPaused { CloseKey.isPaused = true }
             }else{
                 if QuitKey.isPaused { QuitKey.isPaused = false }
                 if CloseKey.isPaused && blockCmdW { CloseKey.isPaused = false }
