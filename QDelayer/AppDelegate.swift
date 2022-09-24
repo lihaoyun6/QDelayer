@@ -26,6 +26,7 @@ extension Bundle {
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
     var fApp = ""
+    var count = 0
     var timer: Timer?
     var HUD: NSWindow?
     var keydown = false
@@ -50,25 +51,32 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     let helperBundleName = "com.lihaoyun6.QDelayerLoginHelper"
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        //启动时暂停快捷键
+        QuitKey.isPaused = true
+        CloseKey.isPaused = true
+        
         //获取自启代理状态
         foundHelper = NSWorkspace.shared.runningApplications.contains { $0.bundleIdentifier == helperBundleName }
         
+        //初始化
         menuIcon()
         menuWillOpen(menu)
         initHUD()
-        if disable { QuitKey.isPaused = true; CloseKey.isPaused = true } else { QuitKey.isPaused = false; CloseKey.isPaused = false; startTimer() }
-        if !blockCmdW { CloseKey.isPaused = true } else { CloseKey.isPaused = false }
+
         //转换参数, 保持旧版兼容性
         if delay < 50 { delay = 50 }
+        //选择性开启快捷键
+        if !disable { QuitKey.isPaused = false; if blockCmdW {CloseKey.isPaused = false}; startTimer() }
 
         QuitKey.keyDownHandler = {
             self.keydown = true
-            let fApp = self.getAppName(NSWorkspace.shared.frontmostApplication?.bundleURL)
-            if (self.whiteMode && !self.blackList.contains(fApp)) || (!self.whiteMode && self.blackList.contains(fApp)) {
-                NSWorkspace.shared.frontmostApplication?.terminate()
-                return
-            }
-            
+            self.count += 1
+            //let fApp = self.getAppName(NSWorkspace.shared.frontmostApplication?.bundleURL)
+            //if (self.whiteMode && !self.blackList.contains(fApp)) || (!self.whiteMode && self.blackList.contains(fApp)) {
+            //    NSWorkspace.shared.frontmostApplication?.terminate()
+            //    return
+            //}
             self.text.stringValue = self.labelQ
             if self.anima { self.text.stringValue = "⬜️ " + self.labelQ + " ⬜️" }
             if self.doubleQ { self.text.stringValue = self.labelQD }
@@ -117,6 +125,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
         
         CloseKey.keyDownHandler = {
+            self.count += 1
             self.text.stringValue = self.labelWD
             self.setTextWidth(self.text.stringValue)
             self.HUD?.makeKeyAndOrderFront(self)
@@ -154,11 +163,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     @objc func loopFireHandler(_ timer: Timer?) -> Void {
         fApp = getAppName(NSWorkspace.shared.frontmostApplication?.bundleURL)
         if whiteMode {
-            if !blackList.contains(fApp) { QuitKey.isPaused = true; CloseKey.isPaused = true }
-            else { QuitKey.isPaused = false; CloseKey.isPaused = false }
+            if !blackList.contains(fApp) {
+                if !QuitKey.isPaused { QuitKey.isPaused = true }
+                if !CloseKey.isPaused { QuitKey.isPaused = true }
+            }else{
+                if QuitKey.isPaused { QuitKey.isPaused = false }
+                if CloseKey.isPaused && blockCmdW { CloseKey.isPaused = false }
+            }
         }else{
-            if blackList.contains(fApp) { QuitKey.isPaused = true; CloseKey.isPaused = true }
-            else { QuitKey.isPaused = false; CloseKey.isPaused = false }
+            if blackList.contains(fApp) {
+                if !QuitKey.isPaused { QuitKey.isPaused = true }
+                if !CloseKey.isPaused { QuitKey.isPaused = true }
+            }else{
+                if QuitKey.isPaused { QuitKey.isPaused = false }
+                if CloseKey.isPaused && blockCmdW { CloseKey.isPaused = false }
+            }
         }
     }
 
@@ -189,9 +208,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         let choose = NSMenu()
         menu.removeAllItems()
         menu.delegate = self
-        menu.autoenablesItems = false
+        //choose.autoenablesItems = false
         let Switch = menu.addItem(withTitle: "\(fApp): \(getEnableText(fApp))", action: #selector(addToList(_:)), keyEquivalent: "")
         menu.addItem(NSMenuItem.separator())
+        menu.addItem(withTitle: String(format: "已拦截 %d 次".local, count), action: nil, keyEquivalent: "")
         menu.setSubmenu(options, for: menu.addItem(withTitle: "偏好设置...".local, action: nil, keyEquivalent: ""))
         options.addItem(withTitle: "登录时启动".local, action: #selector(setRunAtLogin(_:)), keyEquivalent: "").state = state(foundHelper)
         options.addItem(NSMenuItem.separator())
@@ -204,7 +224,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         if !doubleQ {
             choose.addItem(withTitle: "长按延时:".local, action: nil, keyEquivalent: "").target = self
             //choose.addItem(withTitle: "1s        2s        3s        4s", action: nil, keyEquivalent: "").isEnabled = false
-            choose.addItem(withTitle: "0.5s    1.0s    1.5s    2.0s", action: nil, keyEquivalent: "")
+            choose.addItem(withTitle: "0.5s    1.0s    1.5s    2.0s", action: nil, keyEquivalent: "").isEnabled = false
             let menuSliderItem = NSMenuItem()
             let menuSlider = NSSlider.init(frame: NSRect(x: 16, y: 0, width: choose.size.width-30, height: 32))
             let view = NSView.init(frame: NSRect(x: 0, y: 0, width: choose.size.width, height: 32))
@@ -223,7 +243,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         if blockCmdW || doubleQ {
             choose.addItem(NSMenuItem.separator())
             choose.addItem(withTitle: "双击间隔:".local, action: nil, keyEquivalent: "")
-            choose.addItem(withTitle: "0.4s    0.6s    0.8s    1.0s", action: nil, keyEquivalent: "")
+            choose.addItem(withTitle: "0.4s    0.6s    0.8s    1.0s", action: nil, keyEquivalent: "").isEnabled = false
             let menuSliderItem = NSMenuItem()
             let menuSlider = NSSlider.init(frame: NSRect(x: 16, y: 0, width: choose.size.width-30, height: 32))
             let view = NSView.init(frame: NSRect(x: 0, y: 0, width: choose.size.width, height: 32))
@@ -256,7 +276,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         disable.toggle()
         statusItem.button?.image = NSImage(named:NSImage.Name("MenuBarIcon\(NSNumber(value: !disable).intValue)"))
         UserDefaults.standard.set(disable, forKey: "disable")
-        if disable { stopTimer(); QuitKey.isPaused = true; CloseKey.isPaused = true } else { QuitKey.isPaused = false; CloseKey.isPaused = false; startTimer() }
+        if disable { stopTimer(); QuitKey.isPaused = true; CloseKey.isPaused = true } else { QuitKey.isPaused = false; if blockCmdW {CloseKey.isPaused = false}; startTimer() }
     }
     
     //将Bool值转换为NSControl.StateValue

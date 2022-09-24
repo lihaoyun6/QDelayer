@@ -20,4 +20,5 @@
 "双击间隔:" = "Double Press:";
 "白名单模式" = "Whitelist Mode";
 "登录时启动" = "Launch at Login";
+"已拦截 %d 次" = "Blocked %d Times";
 "退出" = "Quit";
