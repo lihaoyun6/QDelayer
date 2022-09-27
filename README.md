@@ -2,7 +2,7 @@
 <p align="center">
 <img src="./img/QDelayer.png" width="200" height="200" />
 <h1 align="center">QDelayer</h1>
-<h3 align="center">为macOS的 ⌘Q 快捷键添加延时, 防止误触<br><a href="./README_en.md">[English Version]</a></h3> 
+<h3 align="center">为macOS的 ⌘Q 和 ⌘W 快捷键添加延时<br><a href="./README_en.md">[English Version]</a></h3> 
 </p>
 
 ## 运行截图
