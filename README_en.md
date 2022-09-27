@@ -2,7 +2,7 @@
 <p align="center">
 <img src="./img/QDelayer.png" width="200" height="200" />
 <h1 align="center">QDelayer</h1>
-<h3 align="center">Block the ⌘Q and ⌘W hotkey for macOS<br><a href="./">[中文版本]</a></h3> 
+<h3 align="center">Block the ⌘Q and ⌘W hotkey for macOS<br><a href="./README.md">[中文版本]</a></h3> 
 </p>
 
 ## Screenshot
