@@ -2,12 +2,12 @@
 <p align="center">
 <img src="./img/QDelayer.png" width="200" height="200" />
 <h1 align="center">QDelayer</h1>
-<h3 align="center">为macOS的 ⌘Q 快捷键添加延时, 防止误触</h3> 
+<h3 align="center">为macOS的 ⌘Q 快捷键添加延时, 防止误触<br><a href="./README_en.md">[English Version]</a></h3> 
 </p>
 
 ## 运行截图
 <p align="center">
-<img src="./img/Preview_zh.gif"/> <img src="./img/doublePress.gif"/>  
+<img src="./img/Preview_zh.gif"/> <img src="./img/DoublePress_zh.gif"/>  
 </p>
 
 ## 安装与使用
@@ -25,16 +25,16 @@ QDelayer 启动后会在菜单栏显示图标, 使用过程中不再产生其他
 **1. 为什么我的 QDelayer 提示没有倒计时动画效果?**  
 > 请在 QDelayer 偏好设置中启用"倒计时动画"选项即可.  
 
-**2. 如何延长或缩短 QDelayer 的等待时长或双击间隔?**  
-> 可在偏好设置中的"延时设置..."选项中设置.  
-
-**3. 有没有除了长按快捷键以外的其他触发方法?**  
+**2. 有没有除了长按快捷键以外的其他触发方法?**  
 > 在偏好设置中启用"双击代替长按"功能, 即可使用快速连按两次的方式触发.
+
+**3. 如何修改 QDelayer 的等待时长或双击间隔?**  
+> 可在偏好设置中的"延时设置..."选项中设置.  
 
 **4. 可以拦截除了 ⌘Q 之外的其他快捷键吗?**  
 > 可以, 在偏好设置中启用"拦截 ⌘W 键"就可以对 ⌘W 快捷键启用双击防误触模式.
 
-**5. 我只想让 QDelayer 对某几个 App 生效, 其他挨个取消太麻烦了怎么办?**
+**5. 我只想让 QDelayer 对某几个 App 生效, 其他挨个取消太麻烦了怎么办?**  
 > 可在 QDelayer 偏好设置中启用"白名单模式"选项, 在此模式下  QDelayer 仅会对选中的 App 生效.  
 
 ## 致谢
