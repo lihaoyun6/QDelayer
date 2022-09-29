@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var blockCmdW = UserDefaults.standard.bool(forKey: "blockCmdW")
     var whiteMode = UserDefaults.standard.bool(forKey: "whiteMode")
     var delay = (UserDefaults.standard.object(forKey: "delay") ?? 50) as! Int
-    var delayW = (UserDefaults.standard.object(forKey: "delayW") ?? 4000) as! Int
+    var delayW = (UserDefaults.standard.object(forKey: "delayW") ?? 400000) as! Int
     var blackList = (UserDefaults.standard.array(forKey: "blackList") ?? []) as! [String]
     var statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
     let menu = NSMenu()
